@@ -1,6 +1,7 @@
 const userModel=require('../models/user-model');
 const hisaabModel=require('../models/hisaab-model');
-const bcrypt=require("bcrypt")
+const bcrypt = require('bcryptjs');
+
 const jwt=require("jsonwebtoken")
 module.exports.landingPageController=function(req,res){
     const error = req.flash('error');
