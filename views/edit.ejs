@@ -1,0 +1,50 @@
+<%- include('./partials/header.ejs') %>
+    <div class="container mx-auto p-6">
+        <div class="max-w-lg mx-auto bg-white p-6 border border-gray-300 rounded-lg shadow-md">
+            <h2 class="text-2xl font-semibold mb-4">Edit the Hisaab</h2>
+            
+                <form action="/hisaab/edit/<%= hisaab._id %>" method="post">
+                    <div class="mb-4">
+                            <input name="title" type="text" placeholder="Shopping Hisaab, Ghar ka Kharch..."
+                            class="w-full p-2 border border-gray-300 rounded " value="<%= hisaab.title %>" <% var isCreators= typeof isCreator!='undefined'?false:true%>
+                            <% if (!isCreators) { %> disabled <% } %> >
+                    </div>
+    
+                    <div class="mb-4">
+                            <textarea name="description" placeholder="Daal, Aata, Cheeni"
+                            class="resize-none w-full p-2 border border-gray-300 rounded h-32"><%= hisaab.description %></textarea>
+                    </div>
+                    <div class="mb-4">
+                        <label class="inline-flex items-center">
+                            <input name="encrypted" type="checkbox" class="form-checkbox"
+                             <%= hisaab.encrypted ? "checked" : '' %> 
+                             <% var isCreators= typeof isCreator!='undefined'?false:true%>
+                                <% if (!isCreators) { %> disabled <% } %> >
+                             <span class="ml-2">Encrypt this file</span>
+                        </label>
+                        <input name="passcode" type="password" value="<%= hisaab.passcode %> " 
+                            class="w-full mt-2 p-2 border border-gray-300 rounded"  <% var isCreators= typeof isCreator!='undefined'?false:true%>
+                            <% if (!isCreators) { %> disabled <% } %> > 
+                    </div>
+                    <div class="mb-4">
+                            <label class="inline-flex items-center">
+                                <input name="shareable" type="checkbox" class="form-checkbox" <%= hisaab.shareable ? "checked" : '' %> 
+                                <% var isCreators= typeof isCreator!='undefined'?false:true%>
+                                <% if (!isCreators) { %> disabled <% } %> >
+                                <span class="ml-2">Shareable file?</span>
+                            </label>
+                    </div>
+                    <div class="mb-4">
+                            <label class="inline-flex items-center">
+                                <input name="editpermissions" type="checkbox" class="form-checkbox" <%= hisaab.editpermissions ? "checked" : '' %>
+                                <% var isCreators= typeof isCreator!='undefined'?false:true%>
+                                <% if (!isCreators) { %> disabled <% } %> > 
+                                <span class="ml-2">Edit permissions.</span>
+                            </label>
+                    </div>
+                    <div>
+                        <button type="submit" class="w-full bg-blue-500 text-white p-2 rounded">Update the Hisaab</button>
+                    </div>
+                </form>
+            
+    <%- include('./partials/footer.ejs') %>
